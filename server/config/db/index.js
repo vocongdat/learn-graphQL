@@ -5,13 +5,10 @@ dotenv.config();
 
 const connect = async () => {
     try {
-        await mongoose.connect(process.env.DB_HOST);
-        // {
-        //     useNewUrlParser: true,
-        //     useUnifiedTopology: true,
-        //     useFindAndModify: true,
-        //     useCreateIndex: true,
-        // }
+        await mongoose.connect(process.env.DB_HOST, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
         console.log('Connect success');
     } catch (error) {
         console.log('Connect fail');

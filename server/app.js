@@ -28,7 +28,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
     });
     await server.start();
 
-    server.applyMiddleware({ app, path: '/' });
+    server.applyMiddleware({ app, path: server.graphqlPath });
 
     httpServer.listen({ port: process.env.PORT || PORT }, () => {
         console.log(

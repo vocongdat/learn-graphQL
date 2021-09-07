@@ -1,4 +1,5 @@
 const resolvers = {
+    // Query
     Query: {
         provinces: async (parent, args, { mongoDataMethods }) =>
             await mongoDataMethods.getAllProvinces(),
@@ -25,6 +26,11 @@ const resolvers = {
     District: {
         wards: async ({ code }, args, { mongoDataMethods }) =>
             await mongoDataMethods.getWardByCode(code),
+    },
+    // MUTATION
+    Mutation: {
+        createProfile: async (parent, args, { mongoDataMethods }) =>
+            await mongoDataMethods.createProfile(args),
     },
 };
 

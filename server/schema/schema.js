@@ -31,6 +31,15 @@ const typeDefs = gql`
         district_code: Int
     }
 
+    type Profile {
+        id: ID!
+        name: String
+        phoneNumber: String
+        province: String
+        district: String
+        ward: String
+    }
+
     # ROOT TYPE
     type Query {
         provinces: [Province]
@@ -41,6 +50,17 @@ const typeDefs = gql`
 
         wards: [Ward]
         ward(district_code: Int!): [Ward]
+
+        profile: [Profile]
+    }
+    type Mutation {
+        createProfile(
+            name: String
+            phoneNumber: String
+            province: String
+            district: String
+            ward: String
+        ): Profile
     }
 `;
 
