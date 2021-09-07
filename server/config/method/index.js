@@ -6,12 +6,11 @@ const mongoDataMethods = {
     getAllProvinces: async () => await Province.find(),
     getProvinceByCode: async (code) => await Province.find({ code }),
 
-    getAllDistricts: async (condition = null) =>
-        condition === null
-            ? await District.find()
-            : await District.find({ condition }),
+    getAllDistricts: async () => await District.find(),
     getDistrictByCode: async (province_code) =>
         await District.find({ province_code }),
+
+    getOneDistrict: async (code) => await District.findOne({ code }),
 
     getAllWards: async () => await Ward.find(),
     getWardByCode: async (district_code) => await Ward.find({ district_code }),

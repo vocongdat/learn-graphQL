@@ -1,4 +1,3 @@
-import { books, authors } from '../data/index.js';
 const resolvers = {
     Query: {
         provinces: async (parent, args, { mongoDataMethods }) =>
@@ -19,6 +18,8 @@ const resolvers = {
     Province: {
         districts: async ({ code }, args, { mongoDataMethods }) =>
             await mongoDataMethods.getDistrictByCode(code),
+        district: async (parent, { code }, { mongoDataMethods }) =>
+            await mongoDataMethods.getOneDistrict(code),
     },
 
     District: {

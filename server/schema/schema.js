@@ -9,6 +9,7 @@ const typeDefs = gql`
         codename: String
         phone_code: Int
         districts: [District]
+        district(code: Int!): District
     }
 
     type District {
