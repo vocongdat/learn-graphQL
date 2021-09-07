@@ -1,29 +1,45 @@
 import { gql } from 'apollo-server-express';
 
 const typeDefs = gql`
-    type Book {
-        id: ID
-        name: String
-        genre: String
-        author: Author
-    }
-    type Author {
+    type Province {
         id: ID!
         name: String
-        age: Int
-        books: [Book]
+        code: Int
+        division_type: String
+        codename: String
+        phone_code: Int
+        districts: [District]
+    }
+
+    type District {
+        id: ID!
+        name: String
+        code: Int
+        division_type: String
+        codename: String
+        province_code: Int
+        wards: [Ward]
+    }
+
+    type Ward {
+        id: ID!
+        name: String
+        code: Int
+        division_type: String
+        codename: String
+        district_code: Int
     }
 
     # ROOT TYPE
     type Query {
-        books: [Book]
-        book(id: ID!): Book
-        authors: [Author]
-        author(id: ID!): Author
-    }
-    type Mutation {
-        createBook(id: ID!, name: String, genre: String): Book
-        createAuthor(id: ID!, name: String, age: Int): Author
+        provinces: [Province]
+        province(code: Int!): [Province]
+
+        districts: [District]
+        district(province_code: Int!): [District]
+
+        wards: [Ward]
+        ward(district_code: Int!): [Ward]
     }
 `;
 
