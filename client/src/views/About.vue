@@ -1,16 +1,16 @@
 <template>
     <div class="about">
         <h1>This is an about page</h1>
-        <Provinces />
+        <SelectAddress />
     </div>
 </template>
 
 <script>
-import Provinces from '../components/Provinces.vue';
+import SelectAddress from '../components/SelectAddress.vue';
 
 export default {
     components: {
-        Provinces,
+        SelectAddress,
     },
 };
 </script>
