@@ -15,6 +15,11 @@ const resolvers = {
             await mongoDataMethods.getAllWards(),
         ward: async (parent, { district_code }, { mongoDataMethods }) =>
             await mongoDataMethods.getWardByCode(district_code),
+
+        profiles: async (parent, args, { mongoDataMethods }) =>
+            await mongoDataMethods.getAllProfile(args),
+        profile: async (parent, { id }, { mongoDataMethods }) =>
+            await mongoDataMethods.getProfileById(id),
     },
     Province: {
         districts: async ({ code }, args, { mongoDataMethods }) =>
@@ -31,6 +36,10 @@ const resolvers = {
     Mutation: {
         createProfile: async (parent, args, { mongoDataMethods }) =>
             await mongoDataMethods.createProfile(args),
+        editProfile: async (parent, args, { mongoDataMethods }) =>
+            await mongoDataMethods.editProfile(args),
+        deleteProfile: async (parent, { id }, { mongoDataMethods }) =>
+            await mongoDataMethods.deleteProfile(id),
     },
 };
 

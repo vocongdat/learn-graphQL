@@ -34,6 +34,7 @@ const typeDefs = gql`
     type Profile {
         id: ID!
         name: String
+        avatar: String
         phoneNumber: String
         province: String
         district: String
@@ -51,16 +52,29 @@ const typeDefs = gql`
         wards: [Ward]
         ward(district_code: Int!): [Ward]
 
-        profile: [Profile]
+        profiles: [Profile]
+        profile(id: ID!): Profile
     }
     type Mutation {
         createProfile(
             name: String
+            avatar: String
             phoneNumber: String
             province: String
             district: String
             ward: String
         ): Profile
+
+        editProfile(
+            id: ID!
+            name: String
+            avatar: String
+            phoneNumber: String
+            province: String
+            district: String
+            ward: String
+        ): Profile
+        deleteProfile(id: ID!): Profile
     }
 `;
 
